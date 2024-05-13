@@ -84,7 +84,7 @@ rutas.get('/peliculasPorAnioEstreno/:anio', async (req, res) => {
             fecha_estreno: { $gte: new Date(anio, 0, 1), $lt: new Date(anio + 1, 0, 1) }
         });
 
-        if (!peliculasPorAnio) {
+        if (peliculasPorAnio.length === 0) {
             return res.status(404).json({ mensaje: `No se encontraron películas estrenadas en el año ${anio}` });
         }
 
